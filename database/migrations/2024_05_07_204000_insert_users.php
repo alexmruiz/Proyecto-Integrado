@@ -19,6 +19,9 @@ return new class extends Migration {
                 'email' => 'usuario' . ($i + 1) . '@example.com',
                 'password' => Hash::make('password'), // Cambia 'password' por la contraseña deseada
                 'rol' => $i % 2 == 0 ? 'teacher' : 'student', // Alterna entre "teacher" y "student" para cada usuario
+                'about' => 'Información acerca del usuario',
+                'addres' => 'Calle'.random_int(1,50),
+                'phone' => random_int(600000000, 699999999),
                 'email_verified_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now(),

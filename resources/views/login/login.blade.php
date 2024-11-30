@@ -53,6 +53,18 @@
 						<form method="POST" action="{{ route('custom-login') }}">
 							@csrf	
 							<div class="mb-3">
+								@if ($errors->any())
+							<div>
+								
+									@foreach ($errors->all() as $error)
+									<div class="alert alert-danger" role="alert">
+										{{$error}}
+									  </div>
+										
+									@endforeach
+								
+							</div>
+							@endif
 								
 								<label for="email" class="form-label cursor-pointer">Email </label>
 								<input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
@@ -83,15 +95,7 @@
 								</span>
 							
 							</div>
-							@if ($errors->any())
-							<div>
-								<ul>
-									@foreach ($errors->all() as $error)
-										<li>{{ $error }}</li>
-									@endforeach
-								</ul>
-							</div>
-							@endif
+							
 						</form>
 					</div>
 

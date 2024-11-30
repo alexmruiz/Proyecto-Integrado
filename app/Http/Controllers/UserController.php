@@ -211,30 +211,24 @@ class UserController extends Controller
 
     public function updateProfile(Request $request)
     {
-        // Obtener el usuario autenticado
+
         $user = Auth::user();
 
-        // Verificar si se ha enviado un archivo de imagen
         if ($request->hasFile('profile_picture')) {
-            // Obtener el archivo de imagen
+
             $profile_picture = $request->file('profile_picture');
 
-            // Generar un nombre único para la imagen
             $imageName = rand() . '_' . $profile_picture->getClientOriginalName();
 
-            // Mover la imagen al directorio de almacenamiento
             $profile_picture->move(public_path('uploads'), $imageName);
 
-            // Construir la ruta de acceso a la imagen
             $path = "/uploads/" . $imageName;
-            // dd($path);
-            // Actualizar el campo 'profile_picture' del usuario con la nueva ruta de imagen
+
             $user->profile_picture = $path;
 
-            // Guardar los cambios en el usuario
+
             $user->save();
 
-            // Redirigir de vuelta con un mensaje de éxito
             return redirect()->back()->with('success', 'Foto de perfil actualizada correctamente');
         }
     }
@@ -292,7 +286,7 @@ public function searchTeachers(Request $request) {
 
             $teachers->whereNotIn('id', $busyTeacherIds);
         } catch (\Exception $e) {
-            // Manejar el error si es necesario, por ejemplo, agregando un mensaje de error en la sesión
+            
         }
     }
 

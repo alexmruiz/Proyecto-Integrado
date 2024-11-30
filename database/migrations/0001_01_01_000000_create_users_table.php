@@ -22,7 +22,7 @@ return new class extends Migration
         });
 
         // Insertar 3 usuarios
-        DB::table('users')->insert([
+       /* DB::table('users')->insert([
             [
                 'name' => 'Usuario 1',
                 'email' => 'usuario1@example.com',
@@ -44,7 +44,7 @@ return new class extends Migration
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-        ]);
+        ]);*/
     
 
 
